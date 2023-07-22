@@ -1,0 +1,22 @@
+string transform(string S){
+    //complete the function here
+     stack<pair<char, int>> str;
+
+    for (char c : S) {
+        char lowercaseC = tolower(c);
+        if (!str.empty() && str.top().first == lowercaseC) {
+            str.top().second++;
+        } else {
+            str.push(make_pair(lowercaseC, 1));
+        }
+    }
+
+    string result;
+    while (!str.empty()) {
+        result = to_string(str.top().second) + str.top().first + result;
+        str.pop();
+    }
+
+    return result;
+    
+}
